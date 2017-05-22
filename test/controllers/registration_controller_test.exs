@@ -6,7 +6,7 @@ defmodule Peepchat.RegistrationControllerTest do
   @valid_attrs %{
     email: "mike@example.com",
     password: "fqhi12hrrfasf",
-    password_confirmation: "fqhi12hrrfasf"
+    "password-confirmation": "fqhi12hrrfasf"
   }
 
   @invalid_attrs %{}
