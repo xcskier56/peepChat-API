@@ -11,9 +11,6 @@ defmodule Peepchat.User do
     timestamps()
   end
 
-  @required_fields ~w(email password password_confirmation)
-  @optional_fields ~w()
-
   @doc """
   Creates a changeset based on the `model` and `params`.
   If no params are provided, an invalid changeset is returned
@@ -21,7 +18,8 @@ defmodule Peepchat.User do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, @required_fields, @optional_fields)
+    |> cast(params, [:email, :password, :password_confirmation])
+    |> validate_required([:email, :password, :password_confirmation])
     |> validate_format(:email, ~r/@/)
     |> validate_length(:password, min: 8)
     |> validate_confirmation(:password)
